@@ -30,7 +30,8 @@ defmodule Snapshy.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:text_diff, "~> 0.1.0"}
     ]
   end
 

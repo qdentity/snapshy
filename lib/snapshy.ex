@@ -146,11 +146,14 @@ defmodule Snapshy do
 
   defp raise_error(file, left, right) do
     file = snapshot_directory(file)
+    diff = left |> TextDiff.format(right) |> IO.iodata_to_binary()
 
     raise ExUnit.AssertionError,
-      left: left,
-      right: right,
-      message: "Received value does not match stored snapshot. (#{file})",
+      message: """
+      Received value does not match stored snapshot. (#{file})
+
+      #{diff}
+      """,
       expr: "Snapshot == Received"
   end
 
